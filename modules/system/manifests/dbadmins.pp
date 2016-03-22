@@ -9,17 +9,15 @@ class system::dbadmins {
     max_queries_per_hour => 600,
   }
 
-  mysql_user { [ 'monica@localhost', 'brad@localhost', 'luke@localhost' ]:
-
+  $users = {
+    'monica@localhost' => { ensure => present, },
+    'brad@localhost'   => { ensure => present, },
+    'luke@localhost'   => { ensure => present, },
+    'zack@localhost'   => { ensure => present, max_queries_per_hour => 1200, },
+    'ralph@localhost'  => { ensure => absent, },
   }
 
-  mysql_user { 'zack@localhost':
-    max_queries_per_hour => 1200,
-  }
-
-  mysql_user { 'ralph@localhost':
-    ensure => absent,
-  }
+  create_resources('mysql_user', $users)
 
 }
 
