@@ -14,6 +14,7 @@ class review(
   }
 
   user { $user:
+    ensure     => present,
     shell      => '/bin/csh',
     managehome => true,
   }
