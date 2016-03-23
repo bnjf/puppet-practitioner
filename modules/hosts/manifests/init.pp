@@ -4,9 +4,9 @@ class hosts {
     purge => true,
   }
 
-  @@host { $::hostname:
+  @@host { $::fqdn:
     ip           => $::ipaddress,
-    host_aliases => $::fqdn,
+    host_aliases => $::hostname,
     tag          => 'classroom',
   }
 
