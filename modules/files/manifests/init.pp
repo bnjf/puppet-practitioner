@@ -25,20 +25,17 @@ class files {
     mode  => '0644',
   }
 
-  concat::fragment { 'motd header':
-    target => $motd,
-    content => template('files/motd_header.erb'),
-    order  => '01',
+  files::motd { 'header':
+    message => template('files/motd_header.erb'),
+    order   => '01',
   }
 
-  concat::fragment { 'motd body':
-    target  => $motd,
+  files::motd { 'body':
     content => "unauthorised use prohibited, etc\n",
     order   => '50',
   }
 
-  concat::fragment { 'motd footer':
-    target => $motd,
+  files::motd { 'footer':
     content => template('files/motd_footer.erb'),
     order  => '99',
   }
