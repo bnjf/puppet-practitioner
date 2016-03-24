@@ -10,6 +10,9 @@ class apache::params {
       $config  = '/etc/apache2/apache2.conf'
       $service = 'apache2'
     }
+    default: {
+      fail("unknown operatingsystem: $operatingsystem")
+    }
   }
 }
 

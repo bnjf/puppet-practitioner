@@ -43,7 +43,7 @@ class apache inherits apache::params {
   file { 'apache_config':
     path    => $apache::params::config,
     ensure  => file,
-    source  => 'puppet:///modules/apache/${operatingsystem}.conf',
+    source  => "puppet:///modules/apache/${operatingsystem}.conf",
     require => Package['apache'],
   }
   service { 'apache':
